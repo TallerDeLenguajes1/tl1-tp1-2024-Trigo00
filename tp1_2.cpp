@@ -1,13 +1,13 @@
 #include <stdio.h>
 
 //Funcion apartado A (devolviendo un tipo int)
-int devolverCuadradoA(int numero);
+int devolverCuadradoA(int *numero);
 
 //Funcion apartado B (devolviendo un tipo void)
-void devolverCuadradoB(int numero);
+void devolverCuadradoB(int *numero);
 
 //Funcion apartado C (Lo hice que reciba un entero, a modo de facilitar las cosas)
-void datosVariable(int var);
+void datosVariable(int *var);
 
 //Funcion apartado D
 void invertir(int a, int b);
@@ -18,15 +18,16 @@ void orden(int a, int b);
 int main(){
 
     int num = 8;
+    int *pNum = &num;
     int resultado;
 
-    resultado = devolverCuadradoA(num);
+    resultado = devolverCuadradoA(pNum);
 
     printf("%d", resultado);
 
-    devolverCuadradoB(num);
+    devolverCuadradoB(pNum);
 
-    datosVariable(2);
+    datosVariable(pNum);
 
     invertir(2,4);
 
@@ -35,17 +36,17 @@ int main(){
     return 0;
 }
 
-int devolverCuadradoA(int numero){
-    return numero * numero;
+int devolverCuadradoA(int *numero){
+    return (*numero * (*numero));
 }
 
-void devolverCuadradoB(int numero){
-    printf("\nEl cuadrado de %d es: %d", numero, numero * numero);
+void devolverCuadradoB(int *numero){
+    printf("\nEl cuadrado de %d es: %d", *numero, (*numero * (*numero)));
 }
 
-void datosVariable(int var){
+void datosVariable(int *var){
     printf("\nLa direccion de memoria de la variable es: %p", &var);
-    printf("\nEl contenido de la variable es: %d", var);
+    printf("\nEl contenido de la variable es: %d", *var);
 }
 
 void invertir(int a, int b){
